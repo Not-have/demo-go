@@ -74,6 +74,14 @@ func Html(c *gin.Context) {
 	})
 }
 
+func Upload(c *gin.Context) {
+	fmt.Println(time.Now().Unix())
+	// 需要配置 otherRouter.LoadHTMLGlob("./template/**")
+	c.HTML(http.StatusOK, "upload.html", gin.H{
+		"title": "我是后台的数据",
+	})
+}
+
 func GetParams(c *gin.Context) {
 	pageNum := c.Query("pageNum")
 	page := c.DefaultQuery("page", "1")

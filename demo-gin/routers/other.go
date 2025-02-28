@@ -58,6 +58,7 @@ func Other(r *gin.Engine) {
 
 	// 这个并不常用
 	otherRouter.GET("/html", other.Html)
+	otherRouter.GET("/upload", other.Upload)
 
 	// get 传旨
 	// http://localhost:8010/get-params?page=10&pageNum=50
