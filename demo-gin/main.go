@@ -1,8 +1,10 @@
 package main
 
 import (
+	"demo-gin/models"
 	routers "demo-gin/routers"
 	"fmt"
+	"text/template"
 
 	"github.com/gin-gonic/gin"
 )
@@ -19,6 +21,10 @@ func initMiddlewareOne(c *gin.Context) {
 
 func main() {
 	r := gin.Default()
+
+	r.SetFuncMap(template.FuncMap{
+		"UniToTime": models.UnixToTime,
+	})
 
 	r.LoadHTMLGlob("./template/**")
 

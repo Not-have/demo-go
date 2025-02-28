@@ -3,6 +3,7 @@ package other
 import (
 	"fmt"
 	"net/http"
+	"time"
 
 	"github.com/gin-gonic/gin"
 )
@@ -65,9 +66,11 @@ func Xml(c *gin.Context) {
 }
 
 func Html(c *gin.Context) {
+	fmt.Println(time.Now().Unix())
 	// 需要配置 otherRouter.LoadHTMLGlob("./template/**")
 	c.HTML(http.StatusOK, "index-01.html", gin.H{
 		"title": "我是后台的数据",
+		"time":  1629788418,
 	})
 }
 
