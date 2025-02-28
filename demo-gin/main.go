@@ -4,7 +4,6 @@ import (
 	"demo-gin/models"
 	routers "demo-gin/routers"
 	"fmt"
-	"log"
 	"net/http"
 	"path"
 	"text/template"
@@ -38,7 +37,6 @@ func main() {
 	r.POST("/upload", func(c *gin.Context) {
 		// // 单文件
 		file, _ := c.FormFile("file")
-		log.Println(file.Filename)
 
 		dst := path.Join("./upload", file.Filename)
 
@@ -46,7 +44,6 @@ func main() {
 		c.SaveUploadedFile(file, dst)
 
 		c.String(http.StatusOK, fmt.Sprintf("'%s' uploaded!", file.Filename))
-		c.String(http.StatusOK, "商场")
 	})
 
 	// 路由分组
