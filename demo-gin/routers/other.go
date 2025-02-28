@@ -2,6 +2,7 @@ package routers
 
 import (
 	"demo-gin/controllers/other"
+	"fmt"
 
 	"github.com/gin-gonic/gin"
 )
@@ -16,8 +17,32 @@ type UserInfo struct {
 	UserName string `form:"username" json:"username"`
 }
 
+func initMiddlewareOtherOne(c *gin.Context) {
+	fmt.Println(c.Request.URL)
+	fmt.Println("我是分组中间件 1")
+
+	// 终止请求
+	// c.Abort()
+
+	c.Next()
+
+}
+
+func initMiddlewarOtherTwo(c *gin.Context) {
+	fmt.Println("我是分组中间件 2")
+
+	// 终止请求
+	// c.Abort()
+
+	c.Next()
+
+}
+
 func Other(r *gin.Engine) {
-	otherRouter := r.Group("/other")
+	otherRouter := r.Group("/other", initMiddlewareOtherOne)
+
+	otherRouter.Use(initMiddlewarOtherTwo)
+
 	otherRouter.GET("/string", other.String)
 
 	otherRouter.GET("/object01", other.Object01)
