@@ -1,6 +1,7 @@
 package base
 
 import (
+	"fmt"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -8,6 +9,8 @@ import (
 
 // 结构体
 func Home(c *gin.Context) {
+	fmt.Println("我是首页")
+
 	c.String(http.StatusOK, "首页")
 }
 
