@@ -29,6 +29,5 @@ func main() {
 			"data": users,
 		})
 	})
-
 	r.Run()
 }
