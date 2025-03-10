@@ -25,6 +25,7 @@ func InitMiddleware(c *gin.Context) {
 	// 使用 goroutine 处理异步请求，也就是携程
 	// 使用了 goroutine 后，不会阻塞请求，不能使用上下文的 c *gin.Context，只能使用 cCp := c.Copy() 的只读副本
 	// 为了防止 goroutine 泄漏，确保在请求处理程序返回时或者使用 defer 语句
+	// 过了两秒后，打印 Done! in path /admin/login
 	go func() {
 		time.Sleep(2 * time.Second)
 		fmt.Println("Done! in path " + cCp.Request.URL.Path)
