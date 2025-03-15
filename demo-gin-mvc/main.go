@@ -16,5 +16,4 @@ func main() {
 	routers.RoutersAdminLogin(r)
 
 	r.Run()
-
 }

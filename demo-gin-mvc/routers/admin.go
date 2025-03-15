@@ -13,5 +13,6 @@ func RoutersAdminLogin(r *gin.Engine) {
 
 	{
 		routerAdmin.POST("/login", admin.LoginControllers{}.Index)
+		routerAdmin.GET("/user", admin.UserControllers{}.Index)
 	}
 }
