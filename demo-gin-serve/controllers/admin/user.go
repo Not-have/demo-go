@@ -1,7 +1,7 @@
 package admin
 
 import (
-	"demo-gin-mvc/models"
+	"demo-gin-serve/models"
 
 	"github.com/gin-gonic/gin"
 )

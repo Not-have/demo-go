@@ -1,7 +1,7 @@
 package main
 
 import (
-	"demo-gin-mvc/routers"
+	"demo-gin-serve/routers"
 
 	"github.com/gin-gonic/gin"
 )
