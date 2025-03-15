@@ -1,4 +1,4 @@
-module demo-gin-mvc
+module demo-gin-serve
 
 go 1.23.4
 
