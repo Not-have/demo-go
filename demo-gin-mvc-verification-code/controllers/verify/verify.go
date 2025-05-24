@@ -22,3 +22,21 @@ func (con VerifyControllers) Captcha(c *gin.Context) {
 		"CaptchaImage": b64s,
 	})
 }
+
+func (con VerifyControllers) CheckCaptcha(c *gin.Context) {
+
+	id := c.PostForm("CaptchaId")
+	value := c.PostForm("CaptchaValue")
+
+	if models.VerifyCaptcha(id, value) {
+		c.JSON(http.StatusOK, gin.H{
+			"code": 0,
+			"msg":  "验证码正确",
+		})
+	} else {
+		c.JSON(http.StatusOK, gin.H{
+			"code": 1,
+			"msg":  "验证码错误",
+		})
+	}
+}

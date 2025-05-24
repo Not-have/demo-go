@@ -8,4 +8,6 @@ import (
 
 func RoutersVerify(r *gin.Engine) {
 	r.GET("/get-verify", verify.VerifyControllers{}.Captcha)
+
+	r.POST("/check-verify", verify.VerifyControllers{}.CheckCaptcha)
 }

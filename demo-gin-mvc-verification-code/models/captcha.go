@@ -1,6 +1,7 @@
 package models
 
 import (
+	"fmt"
 	"image/color"
 
 	"github.com/mojocn/base64Captcha"
@@ -39,6 +40,10 @@ func MakeCaptcha() (string, string, error) {
 
 // 验证验证码
 func VerifyCaptcha(id string, VerifyValue string) bool {
+
+	fmt.Println(id, VerifyValue)
+
+	// 但三个参数代表 验证码ID，验证码，是否清空验证码
 	if store.Verify(id, VerifyValue, true) {
 		return true
 	} else {
