@@ -14,8 +14,7 @@ func main() {
 	r.LoadHTMLGlob("./templates/*")
 
 	// r.Use() 这个里面写的是全局中间件
-	routers.RoutersAdminLogin(r)
-	routers.RoutersHtml(r)
+	routers.RoutersVerify(r)
 
 	r.Run()
 }
