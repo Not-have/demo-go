@@ -9,30 +9,30 @@ import (
 
 var ctx = context.Background()
 
-func ExampleClient() {
+func main() {
 	rdb := redis.NewClient(&redis.Options{
 		Addr:     "localhost:6379",
 		Password: "", // no password set
 		DB:       0,  // use default DB
 	})
 
-	err := rdb.Set(ctx, "key", "value", 0).Err()
-	if err != nil {
-		panic(err)
-	}
+	_, err := rdb.Ping(ctx).Result()
 
-	val, err := rdb.Get(ctx, "key").Result()
 	if err != nil {
-		panic(err)
-	}
-	fmt.Println("key", val)
-
-	val2, err := rdb.Get(ctx, "key2").Result()
-	if err == redis.Nil {
-		fmt.Println("key2 does not exist")
-	} else if err != nil {
-		panic(err)
+		fmt.Println("Failed to connect to Redis:", err)
+		return
 	} else {
-		fmt.Println("key2", val2)
+		fmt.Println("Connected to Redis successfully!")
 	}
+
+	// Set a key, 0 代表没有过期时间
+	err01 := rdb.Set(ctx, "name", "呵呵呵", 0).Err()
+
+	if err01 != nil {
+		fmt.Println("Failed to set key:", err01)
+		return
+	}
+
+	result := rdb.Get(ctx, "name").Val()
+	fmt.Println(result)
 }
